@@ -1,0 +1,60 @@
+@tailwind utilities;
+
+/* Animación suave para entradas */
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Personalización adicional opcional (colores suaves, sombras) */
+.card-shadow {
+  @apply shadow-md hover:shadow-lg transition-shadow duration-300;
+}
+
+.text-muted {
+  @apply text-gray-500;
+}
+
+.section-container {
+  @apply container mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+
+/* Animación suave para entradas */
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Personalización adicional opcional (colores suaves, sombras) */
+.card-shadow {
+  @apply shadow-md hover:shadow-lg transition-shadow duration-300;
+}
+
+.text-muted {
+  @apply text-gray-500;
+}
+
+.section-container {
+  @apply container mx-auto px-4 sm:px-6 lg:px-8;
+}

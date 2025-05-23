@@ -1,0 +1,39 @@
+/* App.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7fafc;
+  padding: 2rem;
+}
+
+h1, h2 {
+  color: #2d3748;
+}
+
+input {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background-color: #4a5568;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+}
+
+li {
+  margin-bottom: 1rem;
+}
+
+strong {
+  color: #1a202c;
+}
