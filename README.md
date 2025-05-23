@@ -29,7 +29,7 @@ Esta aplicación web muestra una lista de productos obtenidos desde una API de d
 1. Clona el repositorio
 2. Instala las dependencias
 3. Inicia la aplicación 
-4. Abre en tu navegador 
+4. Abre en tu navegador http://localhost:5173
 
 
 ## ¿Cómo funciona la aplicación?
