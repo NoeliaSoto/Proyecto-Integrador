@@ -12,8 +12,6 @@ Esta aplicación web muestra una lista de productos obtenidos desde una API de d
   - Cantidad de productos con títulos largos (+20 caracteres).  
   - Precio total de los productos filtrados.  
   - Promedio de descuento aplicado.
-- **Diseño con tarjetas:** Cada producto se muestra en una tarjeta con imagen, descripción, precio original y precio con descuento.
-- **Interfaz sencilla y agradable:** Usamos animaciones suaves y un diseño limpio para una mejor experiencia.
 
 ---
 
