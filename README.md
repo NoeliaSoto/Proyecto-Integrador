@@ -38,8 +38,6 @@ La app consume productos de la API pública [DummyJSON](https://dummyjson.com/pr
 
 - Puedes buscar productos por nombre y la lista se actualiza al instante.
 - Las estadísticas se calculan dinámicamente con los productos que coinciden en la búsqueda.
-- Los productos se presentan visualmente en tarjetas con toda la información relevante.
-- El diseño es responsivo y cuenta con animaciones sutiles para una mejor experiencia.
 
 ---
 
