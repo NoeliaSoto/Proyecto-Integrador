@@ -1,4 +1,4 @@
-# "Tienda La Comarca" - React
+# "Selecta" - React
 
 Esta aplicación web muestra una lista de productos obtenidos desde una API de datos aleatorios, con filtros en tiempo real, estadísticas dinámicas, gráficos interactivos y un diseño moderno y responsivo.
 
