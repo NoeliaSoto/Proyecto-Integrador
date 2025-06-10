@@ -1,26 +1,40 @@
 # Aplicación de Productos - React
 
-Esta aplicación web muestra una lista de productos obtenidos desde una API de datos aleatorios, con filtros en tiempo real, estadísticas dinámicas y un diseño moderno y responsivo.
+Esta aplicación web muestra una lista de productos obtenidos desde una API de datos aleatorios, con filtros en tiempo real, estadísticas dinámicas, gráficos interactivos y un diseño moderno y responsivo.
 
 ---
 
 ## Características principales
 
-- **Búsqueda instantánea:** Filtra productos según el texto que escribas en el buscador.
-- **Estadísticas en vivo:**  
-  - Producto con mayor y menor precio (nombre y valor).  
-  - Cantidad de productos con títulos largos (+20 caracteres).  
-  - Precio total de los productos filtrados.  
-  - Promedio de descuento aplicado.
+- **Búsqueda instantánea:** Filtra productos mientras escribís.
+- **Filtros avanzados:**
+  - Filtrado por **categoría**
+  - Ordenamiento por **precio** y **rating**
+- **Modo oscuro:** Alternable con un botón.
+- **Paginación:** Visualizá 10 productos por página.
+- **Exportación de datos:** Descargá los productos filtrados en CSV.
+- **Estadísticas en vivo:**
+  - Producto más caro y más barato
+  - Cantidad de productos con títulos largos
+  - Precio total
+  - Promedio de descuento
+  - Promedio de rating
+  - Cantidad de productos con stock alto y rating alto
+- **Visualización de datos:**
+  - Gráfico de barras: cantidad de productos por categoría
+  - Línea: evolución simulada de precios
+  - Pie chart: proporción de stock alto/bajo
 
 ---
 
 ## Tecnologías utilizadas
 
-- **React** + **Vite**: Para un entorno de desarrollo rápido y moderno.
-- **Tailwind CSS**: Para estilos responsivos y modernos con poco código.
-- **Axios**: Para consumir la API externa de productos.
-- React Hooks (`useState`, `useEffect`): Para manejo de estado y efectos secundarios.
+- **React** + **Vite**: Framework de JavaScript moderno
+- **Tailwind CSS**: Estilado responsivo y utilitario
+- **Axios**: Llamadas HTTP a la API externa
+- **Recharts**: Gráficos interactivos y dinámicos
+- **JavaScript ES6+**: Lógica funcional moderna
+- **React Hooks**: Para manejo de estado y efectos secundarios.
 
 ---
 
@@ -36,8 +50,10 @@ Esta aplicación web muestra una lista de productos obtenidos desde una API de d
 
 La app consume productos de la API pública [DummyJSON](https://dummyjson.com/products).
 
-- Puedes buscar productos por nombre y la lista se actualiza al instante.
-- Las estadísticas se calculan dinámicamente con los productos que coinciden en la búsqueda.
+- El usuario puede buscar productos por nombre, aplicar filtros y ordenar los resultados.
+- Las estadísticas y gráficos se actualizan dinámicamente según los productos visibles.
+- Los datos pueden exportarse a CSV para su análisis externo.
+
 
 ---
 
@@ -45,6 +61,14 @@ La app consume productos de la API pública [DummyJSON](https://dummyjson.com/pr
 
 - `ProductList`: Componente encargado de mostrar la lista de productos en tarjetas.
 - `StatsPanel`: Componente que muestra todas las estadísticas calculadas según los productos visibles.
+- `SearchBar: Componente de entrada que permite al usuario escribir texto para buscar productos. Reutilizable y desacoplado de la lógica principal.
+- `ProductList`: Componente encargado de mostrar la lista de productos en tarjetas. Cada tarjeta incluye título, precio, descuento, rating, stock y categoría.
+- `StatsPanel`: Componente que muestra todas las estadísticas calculadas según los productos visibles. Incluye datos como promedio, extremos, stock y rating.
+- `ChartsPanel`: Componente de visualización interactiva usando Recharts. Muestra:
+  - Gráfico de barras por categoría,
+  - Gráfico de líneas con precios simulados,
+  - Pie chart de proporción de stock.
+- `exportCSV (utils)`: Función externa reutilizable que convierte los productos filtrados en un archivo `.csv` descargable con un solo clic.
 
 ---
 

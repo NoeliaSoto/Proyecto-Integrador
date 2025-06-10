@@ -4,33 +4,32 @@ import {
 } from 'recharts';
 
 function ChartsPanel({ products }) {
-
-    const categoryCounts = Object.values(products.reduce((acc, product) => {
+  const categoryCounts = Object.values(products.reduce((acc, product) => {
     acc[product.category] = acc[product.category] || { category: product.category, count: 0 };
     acc[product.category].count += 1;
     return acc;
-    },{}));
+  }, {}));
 
-const priceEvolution = products.map(p => ({
+  const priceEvolution = products.map(p => ({
     day: `Día ${p.id}`,
     price: p.price
   }));
 
-const stockData = [
+  const stockData = [
     { name: 'Stock > 50', value: products.filter(p => p.stock > 50).length },
     { name: 'Stock ≤ 50', value: products.filter(p => p.stock <= 50).length }
   ];
 
-const COLORS = ['#3182CE', '#E53E3E'];
+  const COLORS = ['#3182CE', '#E53E3E'];
 
   return (
     <section className="container mx-auto max-w-5xl p-6 bg-white dark:bg-gray-800 rounded-lg shadow fade-in mb-10">
-      <h2 className="text-2xl font-bold mb-4 text-blue-600">Visualización de Datos</h2>
+      <h2 className="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400">Visualización de Datos</h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Gráfico de barras */}
         <div>
-          <h3 className="text-lg font-semibold mb-2">Productos por Categoría</h3>
+          <h3 className="text-lg font-semibold mb-2 text-gray-800 dark:text-white">Productos por Categoría</h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={categoryCounts}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -45,7 +44,7 @@ const COLORS = ['#3182CE', '#E53E3E'];
 
         {/* Gráfico de líneas */}
         <div>
-          <h3 className="text-lg font-semibold mb-2">Evolución de Precios (Simulada)</h3>
+          <h3 className="text-lg font-semibold mb-2 text-gray-800 dark:text-white">Evolución de Precios (Simulada)</h3>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={priceEvolution}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -58,9 +57,9 @@ const COLORS = ['#3182CE', '#E53E3E'];
           </ResponsiveContainer>
         </div>
 
-        {/* Pie chart */}
+        {/* Gráfico de pastel */}
         <div className="lg:col-span-2">
-          <h3 className="text-lg font-semibold mb-2">Distribución de Stock</h3>
+          <h3 className="text-lg font-semibold mb-2 text-gray-800 dark:text-white">Distribución de Stock</h3>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie
