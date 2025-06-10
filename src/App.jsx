@@ -19,7 +19,11 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const [darkMode, setDarkMode] = useState(false); // 👈 Estado para modo oscuro
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Estado para paginación
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 10;
 
   useEffect(() => {
     axios.get('https://dummyjson.com/products')
@@ -34,6 +38,7 @@ function App() {
       });
   }, []);
 
+  // Filtrado y ordenamiento
   const filteredproducts = products
     .filter(p =>
       p.title.toLowerCase().includes(search.toLowerCase()) &&
@@ -46,6 +51,17 @@ function App() {
       if (sortBy === 'rating-desc') return b.rating - a.rating;
       return 0;
     });
+
+  // Resetear página actual cuando cambia filtro o búsqueda
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search, category, sortBy]);
+
+  // Cálculo paginación
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = filteredproducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  const totalPages = Math.ceil(filteredproducts.length / productsPerPage);
 
   const maxProduct = filteredproducts.length > 0
     ? filteredproducts.reduce((prev, current) => (prev.price > current.price ? prev : current))
@@ -101,7 +117,6 @@ function App() {
           </select>
         </div>
 
-        {/* Botón para alternar modo oscuro */}
         <button
           onClick={() => setDarkMode(!darkMode)}
           className="bg-gray-800 text-white px-4 py-2 rounded mx-auto block mb-4"
@@ -109,7 +124,6 @@ function App() {
           {darkMode ? "Modo Claro" : "Modo Oscuro"}
         </button>
 
-        {/* Botón para mostrar/ocultar resumen */}
         <button
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition mb-4 mx-auto block"
           onClick={() => setShow(!show)}
@@ -117,7 +131,6 @@ function App() {
           {show ? "Ocultar Resumen" : "Mostrar Resumen"}
         </button>
 
-        {/* Botón para exportar a CSV */}
         <button
           onClick={() => exportToCSV(filteredproducts)}
           className="bg-green-600 text-white px-4 py-2 rounded mx-auto block mb-6"
@@ -143,7 +156,38 @@ function App() {
         )}
 
         <div className="transition-opacity duration-500 ease-in-out">
-          <ProductList products={filteredproducts} />
+          <ProductList products={currentProducts} />
+        </div>
+
+        {/* Controles de paginación */}
+        <div className="flex justify-center gap-2 my-4">
+          <button
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50"
+          >
+            Anterior
+          </button>
+
+          {[...Array(totalPages)].map((_, idx) => (
+            <button
+              key={idx + 1}
+              onClick={() => setCurrentPage(idx + 1)}
+              className={`px-3 py-1 rounded ${
+                currentPage === idx + 1 ? 'bg-blue-600 text-white' : 'bg-gray-200'
+              }`}
+            >
+              {idx + 1}
+            </button>
+          ))}
+
+          <button
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50"
+          >
+            Siguiente
+          </button>
         </div>
 
         {!loading && !error && filteredproducts.length === 0 && (
