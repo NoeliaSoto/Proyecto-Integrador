@@ -72,7 +72,7 @@ function App() {
     <div className={`${darkMode ? 'dark' : ''}`}>
       <div className="min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-300">
         <h1 className="text-3xl text-blue-600 font-bold text-center my-6">
-          Proyecto Integrador
+          Tienda La Comarca
         </h1>
 
         <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
